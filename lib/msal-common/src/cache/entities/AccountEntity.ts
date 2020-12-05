@@ -56,8 +56,9 @@ export class AccountEntity {
     lastModificationApp?: string;
     oboAssertion?: string;
     cloudGraphHostName?: string;
-    msGraphHost?: string; 
+    msGraphHost?: string;
     idTokenClaims?: TokenClaims;
+    rawToken?: string;
 
     /**
      * Generate Account Id key component as per the schema: <home_account_id>-<environment>
@@ -110,7 +111,8 @@ export class AccountEntity {
             username: this.username,
             localAccountId: this.localAccountId,
             name: this.name,
-            idTokenClaims: this.idTokenClaims
+            idTokenClaims: this.idTokenClaims,
+            rawToken: this.rawToken,
         };
     }
 
@@ -159,9 +161,10 @@ export class AccountEntity {
         // non AAD scenarios can have empty realm
         account.realm = idToken?.claims?.tid || "";
         account.oboAssertion = oboAssertion;
-        
+
         if (idToken) {
             account.idTokenClaims = idToken.claims;
+            account.rawToken = idToken.rawToken;
 
             // How do you account for MSA CID here?
             account.localAccountId = idToken?.claims?.oid || idToken?.claims?.sub || "";
@@ -214,6 +217,7 @@ export class AccountEntity {
             account.username = idToken?.claims?.upn || "";
             account.name = idToken?.claims?.name || "";
             account.idTokenClaims = idToken?.claims;
+            account.rawToken = idToken?.rawToken;
         }
 
         account.environment = env;

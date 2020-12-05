@@ -159,10 +159,11 @@ export abstract class CacheManager implements ICacheManager {
                 const idToken = this.readIdTokenFromCache(this.clientId, accountInfo);
                 if (idToken && !accountInfo.idTokenClaims) {
                     accountInfo.idTokenClaims = new AuthToken(idToken.secret, this.cryptoImpl).claims;
+                    accountInfo.rawToken = new AuthToken(idToken.secret, this.cryptoImpl).rawToken;
                 }
 
                 return accountInfo;
-                
+
             });
             return allAccounts;
         }
@@ -534,6 +535,7 @@ export abstract class CacheManager implements ICacheManager {
 
         if (cachedAccount && cachedIdToken) {
             cachedAccount.idTokenClaims = new AuthToken(cachedIdToken.secret, this.cryptoImpl).claims;
+            cachedAccount.rawToken = new AuthToken(cachedIdToken.secret, this.cryptoImpl).rawToken;
         }
 
         return {
