@@ -4,7 +4,7 @@
  */
 
 import * as React from "react";
-import { IPublicClientApplication, stubbedPublicClientApplication } from "@azure/msal-browser";
+import { IPublicClientApplication, stubbedPublicClientApplication } from "@hsluoyz/msal-browser";
 import { InteractionStatus } from "./utils/Constants";
 import { AccountIdentifiers } from "./types/AccountIdentifiers";
 

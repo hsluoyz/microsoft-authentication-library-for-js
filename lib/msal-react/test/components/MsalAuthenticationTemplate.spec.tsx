@@ -8,7 +8,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { testAccount, testResult, TEST_CONFIG } from "../TestConstants";
 import { MsalProvider, MsalAuthenticationTemplate, MsalAuthenticationResult, IMsalContext } from "../../src/index";
-import { PublicClientApplication, Configuration, InteractionType, EventType, AccountInfo, EventCallbackFunction, EventMessage, PopupRequest, AuthError } from "@azure/msal-browser";
+import { PublicClientApplication, Configuration, InteractionType, EventType, AccountInfo, EventCallbackFunction, EventMessage, PopupRequest, AuthError } from "@hsluoyz/msal-browser";
 
 describe("MsalAuthenticationTemplate tests", () => {
     let pca: PublicClientApplication;
@@ -20,7 +20,7 @@ describe("MsalAuthenticationTemplate tests", () => {
 
     let eventCallbacks: EventCallbackFunction[];
     let handleRedirectSpy: jest.SpyInstance;
-    let accounts: AccountInfo[] = [];  
+    let accounts: AccountInfo[] = [];
 
     beforeEach(() => {
         eventCallbacks = [];
@@ -55,7 +55,7 @@ describe("MsalAuthenticationTemplate tests", () => {
         accounts = [];
     });
 
-    test("Calls loginPopup if no account is signed in", async () => {              
+    test("Calls loginPopup if no account is signed in", async () => {
         const loginPopupSpy = jest.spyOn(pca, "loginPopup").mockImplementation((request) => {
             expect(request).toBe(undefined);
             accounts = [testAccount];
@@ -70,7 +70,7 @@ describe("MsalAuthenticationTemplate tests", () => {
             eventCallbacks.forEach((callback) => {
                 callback(eventMessage);
             });
-            
+
             return Promise.resolve(testResult);
         });
 
@@ -89,7 +89,7 @@ describe("MsalAuthenticationTemplate tests", () => {
         expect(screen.queryByText("A user is authenticated!")).toBeInTheDocument();
     });
 
-    test("Calls loginRedirect if no account is signed in", async () => {              
+    test("Calls loginRedirect if no account is signed in", async () => {
         const loginRedirectSpy = jest.spyOn(pca, "loginRedirect").mockImplementation((request) => {
             expect(request).toBe(undefined);
             accounts = [testAccount];
@@ -123,7 +123,7 @@ describe("MsalAuthenticationTemplate tests", () => {
         expect(screen.queryByText("A user is authenticated!")).toBeInTheDocument();
     });
 
-    test("Calls ssoSilent if no account is signed in", async () => {              
+    test("Calls ssoSilent if no account is signed in", async () => {
         const ssoSilentSpy = jest.spyOn(pca, "ssoSilent").mockImplementation((request) => {
             expect(request).toBe(undefined);
             accounts = [testAccount];
@@ -161,7 +161,7 @@ describe("MsalAuthenticationTemplate tests", () => {
         const loginRequest: PopupRequest = {
             scopes: ["openid"],
             redirectUri: "http://localhost"
-        };            
+        };
         const loginPopupSpy = jest.spyOn(pca, "loginPopup").mockImplementation((request) => {
             expect(request).toBe(loginRequest);
             accounts = [testAccount];
@@ -176,7 +176,7 @@ describe("MsalAuthenticationTemplate tests", () => {
             eventCallbacks.forEach((callback) => {
                 callback(eventMessage);
             });
-            
+
             return Promise.resolve(testResult);
         });
 
@@ -195,11 +195,11 @@ describe("MsalAuthenticationTemplate tests", () => {
         expect(screen.queryByText("A user is authenticated!")).toBeInTheDocument();
     });
 
-    test("Calls loginRedirect with provided request if no account is signed in", async () => {       
+    test("Calls loginRedirect with provided request if no account is signed in", async () => {
         const loginRequest: PopupRequest = {
             scopes: ["openid"],
             redirectUri: "http://localhost"
-        };       
+        };
         const loginRedirectSpy = jest.spyOn(pca, "loginRedirect").mockImplementation((request) => {
             expect(request).toBe(loginRequest);
             accounts = [testAccount];
@@ -236,7 +236,7 @@ describe("MsalAuthenticationTemplate tests", () => {
     test("Calls ssoSilent with provided request if no account is signed in", async () => {
         const loginRequest: PopupRequest = {
             scopes: ["openid"]
-        };              
+        };
         const ssoSilentSpy = jest.spyOn(pca, "ssoSilent").mockImplementation((request) => {
             expect(request).toBe(loginRequest);
             accounts = [testAccount];
@@ -284,7 +284,7 @@ describe("MsalAuthenticationTemplate tests", () => {
             eventCallbacks.forEach((callback) => {
                 callback(eventMessage);
             });
-            
+
             return Promise.reject(error);
         });
 
@@ -326,7 +326,7 @@ describe("MsalAuthenticationTemplate tests", () => {
             eventCallbacks.forEach((callback) => {
                 callback(eventMessage);
             });
-            
+
             return Promise.reject(error);
         });
 
@@ -348,7 +348,7 @@ describe("MsalAuthenticationTemplate tests", () => {
             return Promise.resolve(testResult);
         });
 
-        const ErrorMessage = ({error, login}: MsalAuthenticationResult) => {            
+        const ErrorMessage = ({error, login}: MsalAuthenticationResult) => {
             return (
                 <>
                     <p>Error Occurred: {error?.errorCode}</p>

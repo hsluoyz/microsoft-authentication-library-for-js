@@ -7,7 +7,7 @@ import React, {  useState, useCallback } from "react";
 import { MsalProvider, useMsal, UnauthenticatedTemplate } from "../src";
 
 import { msalInstance } from "./msalInstance";
-import { AccountInfo } from "@azure/msal-browser";
+import { AccountInfo } from "@hsluoyz/msal-browser";
 
 export default {
     title: "MSAL React/Acquire Tokens",
@@ -51,7 +51,7 @@ const AcquireTokenSilentExample = () => {
                 <AccountTokenFetcher key={account.homeAccountId} onFetch={getTokenClick} account={account} />
             ))}
         </React.Fragment>
-        
+
     );
 };
 
@@ -75,7 +75,7 @@ const AcquireTokenPopupExample = () => {
                 <AccountTokenFetcher key={account.homeAccountId} onFetch={getTokenClick} account={account} />
             ))}
         </React.Fragment>
-        
+
     );
 };
 

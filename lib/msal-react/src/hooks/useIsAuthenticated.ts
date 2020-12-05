@@ -7,12 +7,12 @@ import { useState, useEffect } from "react";
 import { useMsal } from "./useMsal";
 import { AccountIdentifiers } from "../types/AccountIdentifiers";
 import { useAccount } from "./useAccount";
-import { AccountInfo } from "@azure/msal-browser";
+import { AccountInfo } from "@hsluoyz/msal-browser";
 
 function isAuthenticated(allAccounts: AccountIdentifiers[], account: AccountInfo | null, matchAccount?: AccountIdentifiers): boolean {
     if(matchAccount && (matchAccount.username || matchAccount.homeAccountId || matchAccount.localAccountId)) {
         return !!account;
-    }   
+    }
 
     return allAccounts.length > 0;
 }

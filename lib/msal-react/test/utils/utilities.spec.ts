@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import { AccountInfo } from "@azure/msal-browser";
+import { AccountInfo } from "@hsluoyz/msal-browser";
 import { accountArraysAreEqual } from "../../src/utils/utilities";
 
 const testAccount1: AccountInfo =  {

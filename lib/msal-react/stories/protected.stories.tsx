@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import { MsalProvider, MsalAuthenticationTemplate } from "../src";
-import { InteractionType } from "@azure/msal-browser";
+import { InteractionType } from "@hsluoyz/msal-browser";
 
 import { msalInstance } from "./msalInstance";
 

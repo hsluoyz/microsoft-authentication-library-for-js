@@ -3,6 +3,6 @@
  * Licensed under the MIT License.
  */
 
-import { AccountInfo } from "@azure/msal-browser";
+import { AccountInfo } from "@hsluoyz/msal-browser";
 
 export type AccountIdentifiers = Partial<Pick<AccountInfo, "homeAccountId"|"localAccountId"|"username">>;

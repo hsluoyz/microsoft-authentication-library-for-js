@@ -4,19 +4,19 @@
  */
 
 import * as React from "react";
-import { 
-    MsalProvider, 
-    useMsal, 
-    useIsAuthenticated, 
-    UnauthenticatedTemplate, 
-    AuthenticatedTemplate, 
-    IMsalContext, 
+import {
+    MsalProvider,
+    useMsal,
+    useIsAuthenticated,
+    UnauthenticatedTemplate,
+    AuthenticatedTemplate,
+    IMsalContext,
     useMsalAuthentication
 } from "../src";
 
 import { msalInstance } from "./msalInstance";
 import { useState } from "react";
-import { InteractionType } from "@azure/msal-browser";
+import { InteractionType } from "@hsluoyz/msal-browser";
 
 export default {
     title: "MSAL React/Hooks",
@@ -64,13 +64,13 @@ const UseIsAuthenticatedExample = () => {
 
     const [username, setUsername] = useState(isAuthenticated ? accounts[0].username : "user@example.com");
     const [currentUser, setCurrentUser] = useState(isAuthenticated ? accounts[0].username : "user@example.com");
-    
+
     const isSpecificUserAuthenticated = useIsAuthenticated({username: currentUser});
-    
+
     return (
         <React.Fragment>
             <p>The <pre style={{display: "inline"}}>useIsAuthenticated()</pre> hook will tell you if there is at least one authenticated account. The hook also accepts optional username and homeAccountId arguments, and will indicate whether the given user is authenticated.</p>
-            
+
             <p>
                 {isAuthenticated && (
                     <b>There is at least one account authenticated.</b>
@@ -89,7 +89,7 @@ const UseIsAuthenticatedExample = () => {
 
 const UseMsalAuthenticationExample = () => {
     useMsalAuthentication(InteractionType.Popup);
-    
+
     return (
         <React.Fragment>
             <p>The <pre style={{display: "inline"}}>useMsalAuthentication()</pre> hook initiates the authentication process. You must specify what interaction type to use for authentication. It also accepts optional parameters to identify if a specific user is signed in and a request object passed to the MSAL API for authentication, if necessary.</p>
@@ -113,7 +113,7 @@ const UseSilentMsalAuthenticationExample = () => {
             login(InteractionType.Popup);
         }
     }, [error]);
-    
+
     return (
         <React.Fragment>
             <p>The <pre style={{display: "inline"}}>useMsalAuthentication()</pre> hook initiates the authentication process. You must specify what interaction type to use for authentication. It also accepts optional parameters to identify if a specific user is signed in and a request object passed to the MSAL API for authentication, if necessary.</p>

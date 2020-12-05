@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { AccountInfo, Configuration, EventCallbackFunction, EventMessage, EventType, InteractionType, PublicClientApplication } from "@azure/msal-browser";
+import { AccountInfo, Configuration, EventCallbackFunction, EventMessage, EventType, InteractionType, PublicClientApplication } from "@hsluoyz/msal-browser";
 import { TEST_CONFIG } from '../TestConstants';
 import { MsalProvider, withMsal } from "../../src/index";
 
@@ -43,7 +43,7 @@ describe("withMsal tests", () => {
         jest.clearAllMocks();
     });
 
-    test("withMsal wraps returns component with msal context values added to props", async () => {  
+    test("withMsal wraps returns component with msal context values added to props", async () => {
         const testComponent = ({...props}) => {
             return (
                 <>
@@ -53,8 +53,8 @@ describe("withMsal tests", () => {
                     {props.msalContext.inProgress && (<p>inProgress passed as prop!</p>)}
                 </>
             )
-        }      
-        
+        }
+
         const WrappedComponent = withMsal(testComponent);
         render(
             <MsalProvider instance={pca}>

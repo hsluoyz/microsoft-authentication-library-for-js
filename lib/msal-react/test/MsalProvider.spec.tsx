@@ -7,7 +7,7 @@
 import React from "react";
 import { act, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { AccountInfo, Configuration, EventCallbackFunction, EventMessage, EventType, InteractionType, PublicClientApplication } from "@azure/msal-browser";
+import { AccountInfo, Configuration, EventCallbackFunction, EventMessage, EventType, InteractionType, PublicClientApplication } from "@hsluoyz/msal-browser";
 import { testAccount, TEST_CONFIG } from "./TestConstants";
 import { IMsalContext, MsalConsumer, MsalProvider } from "../src/index";
 import { InteractionStatus } from "../src/utils/Constants";
@@ -57,17 +57,17 @@ describe("withMsal tests", () => {
     });
 
     describe("Event callback tests", () => {
-        test("HandleRedirect Start and End", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("HandleRedirect Start and End", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.HandleRedirect) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -90,7 +90,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -107,21 +107,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("Login Success", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("Login Success", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.Login) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -144,7 +144,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -161,21 +161,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("Login Failure", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("Login Failure", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.Login) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -198,7 +198,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -215,21 +215,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("SsoSilent Success", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("SsoSilent Success", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.SsoSilent) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -252,7 +252,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -269,21 +269,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("SsoSilent Failure", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("SsoSilent Failure", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.SsoSilent) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -306,7 +306,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -323,21 +323,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("Logout Failure", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("Logout Failure", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.Logout) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -360,7 +360,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -377,21 +377,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("AcquireTokenRedirect Success", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("AcquireTokenRedirect Success", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.AcquireToken) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -414,7 +414,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -431,25 +431,25 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("AcquireTokenRedirect Failure", async () => {        
+        test("AcquireTokenRedirect Failure", async () => {
             jest.spyOn(pca, "handleRedirectPromise").mockImplementation(() => {
                 return Promise.reject(new Error("TEST ERROR: This should not break application flow"));
-            });      
+            });
 
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.AcquireToken) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -472,7 +472,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -489,21 +489,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("AcquireTokenPopup Success", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("AcquireTokenPopup Success", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.AcquireToken) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -526,7 +526,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -543,21 +543,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("AcquireTokenPopup Failure", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("AcquireTokenPopup Failure", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.AcquireToken) {
                     return <p>In Progress</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -580,7 +580,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("In Progress")).toBeInTheDocument();
 
             eventMessage = {
@@ -597,21 +597,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("AcquireTokenSilent Success", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("AcquireTokenSilent Success", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.None) {
                     return <p>AcquireTokenSilent does not update inProgress value</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -634,7 +634,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("AcquireTokenSilent does not update inProgress value")).toBeInTheDocument();
 
             eventMessage = {
@@ -651,21 +651,21 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
 
-        test("AcquireTokenSilent Failure", async () => {              
-            const TestComponent = ({accounts, inProgress}: IMsalContext) => {    
+        test("AcquireTokenSilent Failure", async () => {
+            const TestComponent = ({accounts, inProgress}: IMsalContext) => {
                 if (accounts.length === 1 && inProgress === InteractionStatus.None) {
                     return <p>Test Success!</p>;
                 } else if (accounts.length === 0 && inProgress === InteractionStatus.None) {
                     return <p>AcquireTokenSilent does not update inProgress value</p>;
                 }
-                
+
                 return null;
             };
-    
+
             render(
                 <MsalProvider instance={pca}>
                     <MsalConsumer>
@@ -688,7 +688,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("AcquireTokenSilent does not update inProgress value")).toBeInTheDocument();
 
             eventMessage = {
@@ -705,7 +705,7 @@ describe("withMsal tests", () => {
                     callback(eventMessage);
                 });
             });
-    
+
             expect(await screen.findByText("Test Success!")).toBeInTheDocument();
         });
     });

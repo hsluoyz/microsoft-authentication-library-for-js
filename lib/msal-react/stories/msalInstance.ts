@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-import { PublicClientApplication } from "@azure/msal-browser";
+import { PublicClientApplication } from "@hsluoyz/msal-browser";
 
 export const msalInstance = new PublicClientApplication({
     auth: {

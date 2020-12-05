@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from "react";
-import { AccountInfo, IPublicClientApplication } from "@azure/msal-browser";
+import { AccountInfo, IPublicClientApplication } from "@hsluoyz/msal-browser";
 import { useMsal } from "./useMsal";
 import { AccountIdentifiers } from "../types/AccountIdentifiers";
 

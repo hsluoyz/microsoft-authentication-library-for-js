@@ -8,7 +8,7 @@ import {
     IPublicClientApplication,
     EventType,
     EventMessage, InteractionType
-} from "@azure/msal-browser";
+} from "@hsluoyz/msal-browser";
 import { MsalContext, IMsalContext } from "./MsalContext";
 import { InteractionStatus } from "./utils/Constants";
 import { accountArraysAreEqual } from "./utils/utilities";
